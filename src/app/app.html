@@ -1,0 +1,43 @@
+<div class="app">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="titolo">&#9749; Turno del Caff&#232; &#9749;</div>
+    <div class="tazzine">
+      <span class="tazzina">&#9749;</span>
+      <span class="tazzina">&#9749;</span>
+      <span class="tazzina">&#9749;</span>
+      <span class="tazzina">&#9749;</span>
+      <span class="tazzina">&#9749;</span>
+    </div>
+  </div>
+
+  <!-- OROLOGIO -->
+  <app-orologio />
+
+  <div class="separatore"></div>
+
+  <!-- PRESENTI -->
+  <app-presenti />
+
+  <div class="separatore"></div>
+
+  <!-- SORTEGGIO -->
+  <app-sorteggio (sorteggioRichiesto)="onSorteggia()" />
+
+  <!-- RISULTATO -->
+  <app-risultato
+    [emoji]="emoji()"
+    [testo]="testo()"
+    [sottotesto]="sottotesto()"
+    [classeExtra]="classeExtra()"
+    [confetti]="confetti()"
+  />
+
+  <!-- RESET -->
+  <div class="footer-sezione">
+    <button class="btn-reset" (click)="onReset()">&#x1F504; Reset</button>
+  </div>
+
+  <!-- ULTIMO VINCITORE -->
+  <div class="ultimo-bar">{{ ultimoBar() }}</div>
+</div>

@@ -1,0 +1,20 @@
+<div class="presenti-sezione">
+  <div class="presenti-titolo">👥 Chi è in ufficio oggi?</div>
+  <div class="griglia-nomi">
+    @for (nome of nomi; track nome) {
+      <label class="checkbox-item">
+        <input
+          type="checkbox"
+          [checked]="caffe.presenti()[nome]"
+          (change)="toggle(nome)"
+        />
+        <span class="check-custom"></span>
+        <span class="nome-label">{{ nome }}</span>
+      </label>
+    }
+  </div>
+  <div class="azioni-rapide">
+    <button class="azione-link tutti" (click)="selezionaTutti(true)">✅ Tutti</button>
+    <button class="azione-link nessuno" (click)="selezionaTutti(false)">❌ Nessuno</button>
+  </div>
+</div>

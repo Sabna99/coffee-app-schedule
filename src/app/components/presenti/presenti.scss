@@ -1,0 +1,95 @@
+.presenti-sezione {
+  padding: 12px 20px;
+}
+
+.presenti-titolo {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: #FFF8E1;
+  margin-bottom: 12px;
+}
+
+.griglia-nomi {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+  padding: 0 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+
+  &:hover {
+    background: rgba(255, 213, 79, 0.1);
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  input:checked + .check-custom {
+    background: #FF8F00;
+    border-color: #FF8F00;
+    box-shadow: 0 0 12px rgba(255, 143, 0, 0.4);
+
+    &::after {
+      content: '✓';
+      color: #3E2723;
+      font-weight: 900;
+    }
+  }
+
+  input:checked ~ .nome-label {
+    color: #FFD54F;
+  }
+}
+
+.check-custom {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #8D6E63;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.nome-label {
+  font-size: 15px;
+  color: #FFF8E1;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.azioni-rapide {
+  text-align: center;
+  padding: 8px 0 4px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.azione-link {
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-weight: 700;
+
+  &.tutti { color: #66BB6A; }
+  &.nessuno { color: #EF5350; }
+  &:hover { transform: scale(1.1); filter: brightness(1.3); }
+}
