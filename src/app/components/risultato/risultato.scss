@@ -35,8 +35,24 @@
   color: #D7CCC8;
   margin-top: 6px;
   min-height: 20px;
+  transition: transform 0.25s ease, text-shadow 0.25s ease, font-size 0.25s ease;
 
   &.verde { color: #66BB6A; }
+  &.mega {
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 900;
+    color: #ffe082;
+    text-shadow: 0 0 12px rgba(255, 213, 79, 0.55);
+    animation: pulseCaffe 1.1s ease-in-out infinite;
+    margin-top: 10px;
+    min-height: 38px;
+  }
+}
+
+.risultato-sub.mega:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 20px rgba(255, 213, 79, 0.8), 0 0 35px rgba(255, 143, 0, 0.45);
 }
 
 // Animazioni
@@ -57,6 +73,11 @@
 @keyframes glow {
   0%, 100% { text-shadow: 0 0 10px rgba(255, 213, 79, 0.3); }
   50% { text-shadow: 0 0 30px rgba(255, 213, 79, 0.8), 0 0 60px rgba(255, 143, 0, 0.4); }
+}
+
+@keyframes pulseCaffe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
 }
 
 // Confetti

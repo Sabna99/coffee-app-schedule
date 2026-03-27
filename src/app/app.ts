@@ -21,6 +21,7 @@ export class App {
   readonly classeExtra = signal('');
   readonly confetti = signal<string[]>([]);
   readonly ultimoBar = signal('');
+  readonly classifica = this.caffe.classifica;
   private animazioneAttiva = false;
 
   constructor() {
@@ -46,10 +47,10 @@ export class App {
     this.confetti.set([]);
     this.classeExtra.set('');
     this.sottotesto.set('');
-    this.animaRoulette(presenti, vincitore, 0);
+    this.animaRoulette(presenti, vincitore, presenti.length, 0);
   }
 
-  private animaRoulette(presenti: string[], vincitore: string, step: number): void {
+  private animaRoulette(presenti: string[], vincitore: string, presentiCount: number, step: number): void {
     const totale = 22 + Math.floor(Math.random() * 3);
 
     if (step < totale) {
@@ -59,18 +60,20 @@ export class App {
       this.classeExtra.set('');
 
       const delay = 50 + Math.pow(step / totale, 2) * 350;
-      setTimeout(() => this.animaRoulette(presenti, vincitore, step + 1), delay);
+      setTimeout(() => this.animaRoulette(presenti, vincitore, presentiCount, step + 1), delay);
     } else {
-      this.mostraVincitore(vincitore);
+      this.mostraVincitore(vincitore, presentiCount);
     }
   }
 
-  private mostraVincitore(nome: string): void {
+  private mostraVincitore(nome: string, presentiCount: number): void {
     const frase = this.caffe.getFraseCasuale(nome);
+    const estrazione = this.caffe.registraSorteggio(nome, presentiCount);
+    const totali = this.classifica().find((r) => r.nome === nome)?.caffeTotali ?? estrazione.caffeAssegnati;
 
     this.emoji.set('🏆☕🏆');
     this.testo.set(frase);
-    this.sottotesto.set('Buon caffè a tutti! ☕✨');
+    this.sottotesto.set(this.getFraseAssegnazioneCaffe(nome, estrazione.caffeAssegnati, totali));
     this.classeExtra.set('vittoria');
 
     // Confetti
@@ -88,6 +91,19 @@ export class App {
     this.aggiornaUltimoBar();
 
     this.animazioneAttiva = false;
+  }
+
+  private getFraseAssegnazioneCaffe(_nome: string, caffeAssegnati: number, _caffeTotali: number): string {
+    if (caffeAssegnati <= 2) {
+      return `Devi fare ${caffeAssegnati} caffè. Vai tranquillo, campione 😎☕`;
+    }
+    if (caffeAssegnati <= 5) {
+      return `Devi fare ${caffeAssegnati} caffè. Carica la moka, si parte! 🚀☕`;
+    }
+    if (caffeAssegnati <= 8) {
+      return `Devi fare ${caffeAssegnati} caffè. Oggi sei il barista ufficiale 💪☕`;
+    }
+    return `Devi fare ${caffeAssegnati} caffè. Modalità leggenda attivata 👑☕`;
   }
 
   onReset(): void {

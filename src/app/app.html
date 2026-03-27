@@ -33,6 +33,22 @@
     [confetti]="confetti()"
   />
 
+  <div class="separatore"></div>
+
+  <div class="classifica-sezione">
+    <div class="classifica-titolo">🏁 Classifica dei Baristi Leggendari</div>
+    <div class="classifica-sub">Chi ha salvato piu pause caffe finora? ☕</div>
+    @for (riga of classifica(); track riga.nome; let i = $index) {
+      <div class="classifica-riga">
+        <div class="classifica-posizione">#{{ i + 1 }}</div>
+        <div class="classifica-nome">{{ riga.nome }}</div>
+        <div class="classifica-stat">
+          {{ riga.caffeTotali }} ☕ totali
+        </div>
+      </div>
+    }
+  </div>
+
   <!-- RESET -->
   <div class="footer-sezione">
     <button class="btn-reset" (click)="onReset()">&#x1F504; Reset</button>

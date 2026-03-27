@@ -76,6 +76,55 @@
   margin: 8px 30px;
 }
 
+.classifica-sezione {
+  padding: 12px 20px 14px;
+}
+
+.classifica-titolo {
+  text-align: center;
+  color: #ffe082;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.classifica-sub {
+  text-align: center;
+  color: #bcaaa4;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.classifica-riga {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  background: #5d4037;
+  border: 1px solid #6d4c41;
+  border-radius: 10px;
+  padding: 7px 10px;
+  margin-bottom: 7px;
+}
+
+.classifica-posizione {
+  color: #ffd54f;
+  font-weight: 900;
+  font-size: 13px;
+}
+
+.classifica-nome {
+  color: #fff8e1;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.classifica-stat {
+  color: #ffecb3;
+  font-size: 12px;
+  font-weight: 700;
+}
+
 // Footer
 .footer-sezione {
   padding: 8px 20px 12px;

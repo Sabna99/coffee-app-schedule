@@ -6,5 +6,7 @@
   </div>
   <div class="risultato-emoji" [class.vittoria-anim]="emoji()">{{ emoji() }}</div>
   <div class="risultato-testo" [class.oro]="classeExtra() === 'vittoria'" [class.errore]="classeExtra() === 'errore'" [class.glow]="classeExtra() === 'vittoria'">{{ testo() }}</div>
-  <div class="risultato-sub" [class.verde]="classeExtra() === 'vittoria'">{{ sottotesto() }}</div>
+  <div class="risultato-sub" [class.verde]="classeExtra() === 'vittoria'" [class.mega]="classeExtra() === 'vittoria'">
+    {{ sottotesto() }}
+  </div>
 </div>
